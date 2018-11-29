@@ -1,13 +1,37 @@
 <html>
     <meta charset="UTF-8">
     <title>Jblog</title>
-    <header>
-        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    </header>
+    <head>
+        <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+        <style type="text/css">
+            /*body {background-color: yellow}
+            h1 {background-color: #00ff00}
+            h2 {background-color: transparent}
+            p {background-color: rgb(250,0,255)}
+            p.no2 {background-color: gray; padding: 20px;}*/
+            #flex{
+              display: flex;
+            }
+
+            #left{
+              flex:1 1 auto;
+              background: red;
+            }
+
+            #right{
+              background:green;
+              width: 200px;
+            }
+        </style>
+    </head>
     <body>
-        <div class="container-fluid">
-            <h1>标题</h1>
+ <!--        <div class="container-fluid">
+            <h1>标题</h1> -->
           <!-- Content here -->
+        <!-- </div> -->
+        <div id="flex">
+          <div id="left">我在左边，自适应布局</div>
+          <div id="right">我在右边，定宽</div>
         </div>
     </body>
 </html>
