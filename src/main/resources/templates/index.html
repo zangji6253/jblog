@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Jblog</title>
@@ -24,9 +24,9 @@
 <div class="container-fluid">
     <div id="flex">
         <div id="left">
-            <h1>标题2</h1>
+            <h1 th:text="${name}">标题2</h1>
             <p>
-                内容
+                内容${name}
             </p>
         </div>
         <div id="right">
