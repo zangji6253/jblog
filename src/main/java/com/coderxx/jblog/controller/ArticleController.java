@@ -24,8 +24,8 @@ public class ArticleController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/update/{id}")
-    public void update(@RequestParam Article user) {
-        articleService.update(user);
+    public void update(@RequestParam Article article) {
+        articleService.update(article);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}/select")

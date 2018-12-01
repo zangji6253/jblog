@@ -17,14 +17,23 @@
             // console.log((id !== "undefined"));
 
             if(id){
-                $.post("/article/update/".id,
+                var url = "/article/update/"+id;
+                var article = Object;
+                article.id = id;
+                article.title = title;
+                article.content = content;
+                console.log(url);
+                $.post(url,
                     {
-                        id:id,
-                        title: title,
-                        content: content
+                        article:article
+                        // id:id,
+                        // title: title,
+                        // content: content
                     },
                     function(data){
-                        location.href ="/".id;
+                        // var id = $(".id").val();
+                        // location.href ="/".id;
+                        location.href ="/";
                     });
             }else {
                 $.post("/article/insert",
