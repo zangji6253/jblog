@@ -1,18 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>新增文章</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        function cl(){
+            var id = $(".id").val();
+            var title = $(".title").val();
+            var content = $(".content").val();
+
+            // console.log(id);
+            //
+            // console.log((id !== "undefined"));
+
+            if(id){
+                $.post("/article/update/".id,
+                    {
+                        id:id,
+                        title: title,
+                        content: content
+                    },
+                    function(data){
+                        location.href ="/".id;
+                    });
+            }else {
+                $.post("/article/insert",
+                    {
+                        title: title,
+                        content: content
+                    },
+                    function(data){
+                        location.href ="/";
+                    });
+            }
+        }
+    </script>
 </head>
 <body>
-    <form method="post" action="/article/insert">
+    <form method="post">
         <span>标题</span>
-        <input type="text" name="title">
+        <input type="hidden" class="id" th:value="${article.id}">
+        <input type="text" class="title" th:value="${article.title}">
         <span>内容</span>
-        <textarea name="content"></textarea>
-        <input type="submit" value="提交">
+        <textarea class="content" th:text="${article.content}"></textarea>
+        <button type="button" onclick="cl()">提交</button>
     </form>
 </body>
 </html>

@@ -64,7 +64,7 @@ public class ArticleServiceImpl implements ArticleService {
 //        return articleIterator;
 //    }
 
-    public List<Article> selectAll(){
+    public List<Article> selectAll() {
 //        logger.info("girlList");
         return articleRepository.findAll();
     }
