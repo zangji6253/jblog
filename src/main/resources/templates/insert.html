@@ -18,22 +18,22 @@
 
             if(id){
                 var url = "/article/update/"+id;
-                var article = Object;
-                article.id = id;
-                article.title = title;
-                article.content = content;
-                console.log(url);
+                // var article = Object;
+                // article.id = id;
+                // article.title = title;
+                // article.content = content;
+                // console.log(url);
                 $.post(url,
                     {
-                        article:article
-                        // id:id,
-                        // title: title,
-                        // content: content
+                        article:id,
+                        // // id:id,
+                        title: title,
+                        content: content
                     },
                     function(data){
                         // var id = $(".id").val();
                         // location.href ="/".id;
-                        location.href ="/";
+                        // location.href ="/";
                     });
             }else {
                 $.post("/article/insert",

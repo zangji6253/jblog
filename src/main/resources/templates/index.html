@@ -31,6 +31,7 @@
             <a href="/edit/1" th:href="@{'edit/'+${article.id}}">编辑</a>
         </div>
         <div id="right">
+            <a href="/insert">新增</a>
             <ul th:each="article : ${articles}">
                 <li>
                     <a href="" th:href="${article.id}" th:text="${article.title}"></a>
