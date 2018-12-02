@@ -23,10 +23,23 @@ public class ArticleController {
         articleService.insert(article);
     }
 
+//    @RequestMapping(method = RequestMethod.POST, value = "/update/{id}")
+//    public void update(@RequestParam Article article) {
+//        articleService.update(article);
+//    }
+
     @RequestMapping(method = RequestMethod.POST, value = "/update/{id}")
-    public void update(@RequestParam Article article) {
+    public void update(@PathVariable("id") Integer id,
+                           @RequestParam("title") String title,
+                           @RequestParam("content") String content){
+        Article article = new Article();
+        article.setId(id);
+        article.setTitle(title);
+        article.setContent(content);
+
         articleService.update(article);
     }
+
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}/select")
     public Article select(@PathVariable("id") int id) {
