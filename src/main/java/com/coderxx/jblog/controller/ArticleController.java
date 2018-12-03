@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/article")
+@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600)
 public class ArticleController {
     @Autowired
     private ArticleService articleService;
