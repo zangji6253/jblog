@@ -25,9 +25,10 @@ public class IndexController {
         List<Article> articles = articleService.selectAll();
 
         Article article = articleService.selectById(1);
-        model.addAttribute("articles", articles);
-        model.addAttribute("article", article);
-
+//        if(article.toString() == ''){
+            model.addAttribute("articles", articles);
+            model.addAttribute("article", article);
+//        }
         return "/index";
 //        return "forward:/article/1/select";
     }

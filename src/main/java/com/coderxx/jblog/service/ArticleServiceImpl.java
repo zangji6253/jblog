@@ -1,11 +1,10 @@
 package com.coderxx.jblog.service;
 
 import com.coderxx.jblog.entity.Article;
-import com.coderxx.jblog.repostory.ArticleRepository;
+import com.coderxx.jblog.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
