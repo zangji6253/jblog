@@ -25,8 +25,8 @@ public class ArticleServiceImpl implements ArticleService {
      * 增加 * * @param user
      */
     @Override
-    public void insert(Article article) {
-        articleRepository.save(article);
+    public Article insert(Article article) {
+        return articleRepository.save(article);
     }
 
     /**

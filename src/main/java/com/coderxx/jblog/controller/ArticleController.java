@@ -20,8 +20,8 @@ public class ArticleController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/insert")
-    public void insert(Article article) {
-        articleService.insert(article);
+    public Article insert(Article article) {
+        return articleService.insert(article);
     }
 
 //    @RequestMapping(method = RequestMethod.POST, value = "/update/{id}")

@@ -14,7 +14,7 @@ public interface ArticleService {
     /**
      * 增加
      */
-    public void insert(Article user);
+    public Article insert(Article user);
 
     /**
      * 更新
