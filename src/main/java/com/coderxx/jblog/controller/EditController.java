@@ -17,6 +17,6 @@ public class EditController {
     public String edit(Model model, @PathVariable("id") int id) {
         Article article = articleService.selectById(id);
         model.addAttribute("article", article);
-        return "/insert";
+        return "insert";
     }
 }

@@ -29,7 +29,7 @@ public class IndexController {
             model.addAttribute("articles", articles);
             model.addAttribute("article", article);
 //        }
-        return "/index";
+        return "index";
 //        return "forward:/article/1/select";
     }
 
@@ -39,7 +39,7 @@ public class IndexController {
         Article article = articleService.selectById(id);
         model.addAttribute("articles", articles);
         model.addAttribute("article", article);
-        return "/index";
+        return "index";
     }
 
 }

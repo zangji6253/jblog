@@ -11,6 +11,6 @@ public class InsertController {
     public String index(Model model) {
         Article article = new Article();
         model.addAttribute("article", article);
-        return "/insert";
+        return "insert";
     }
 }
