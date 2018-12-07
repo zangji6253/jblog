@@ -5,6 +5,9 @@ import com.coderxx.jblog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -21,7 +24,9 @@ public class ArticleController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/insert")
     public Article insert(Article article) {
-        return articleService.insert(article);
+        articleService.insert(article);
+        writeToFile(article);
+        return article;
     }
 
 //    @RequestMapping(method = RequestMethod.POST, value = "/update/{id}")
@@ -37,6 +42,8 @@ public class ArticleController {
         article.setId(id);
         article.setTitle(title);
         article.setContent(content);
+
+        writeToFile(article);
 
         articleService.update(article);
     }
@@ -59,6 +66,28 @@ public class ArticleController {
     @RequestMapping(method = RequestMethod.GET, value = "/selectAll")
     public List<Article> selectAll(){
         return articleService.selectAll();
+    }
+
+    private void writeToFile(Article article){
+        try{
+            File file =new File("blogs/"+article.getId()+".md");
+
+            //if file doesnt exists, then create it
+            if(!file.exists()){
+                file.createNewFile();
+            }
+
+            FileWriter fileWritter = new FileWriter(file.getPath());
+
+            fileWritter.write(article.getTitle()+"\n");
+            fileWritter.write(article.getContent()+"\n");
+            fileWritter.close();
+
+            System.out.println("Done");
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 }
 
