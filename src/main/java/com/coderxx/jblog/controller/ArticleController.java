@@ -36,12 +36,14 @@ public class ArticleController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/update/{id}")
     public void update(@PathVariable("id") Integer id,
-                           @RequestParam("title") String title,
-                           @RequestParam("content") String content){
+                       @RequestParam("title") String title,
+                       @RequestParam("content") String content,
+                       @RequestParam("category_id") Integer categoryId) {
         Article article = new Article();
         article.setId(id);
         article.setTitle(title);
         article.setContent(content);
+        article.setCategory_id(categoryId);
 
         writeToFile(article);
 
@@ -54,7 +56,7 @@ public class ArticleController {
         return articleService.selectById(id);
     }
 
-//    @RequestMapping(method = RequestMethod.GET, value = "/selectAll/{pageNum}/{pageSize}")
+    //    @RequestMapping(method = RequestMethod.GET, value = "/selectAll/{pageNum}/{pageSize}")
 //    public List<Article> selectAll(@PathVariable("pageNum") int pageNum, @PathVariable("pageSize") int pageSize) {
 //        Iterator<User> userIterator = userService.selectAll(pageNum, pageSize);
 //        List<User> list = new ArrayList<>();
@@ -64,28 +66,33 @@ public class ArticleController {
 //        return list;
 //    }
     @RequestMapping(method = RequestMethod.GET, value = "/selectAll")
-    public List<Article> selectAll(){
+    public List<Article> selectAll() {
         return articleService.selectAll();
     }
 
-    private void writeToFile(Article article){
-        try{
-            File file =new File("blogs/"+article.getId()+".md");
+    @RequestMapping(method = RequestMethod.GET, value = "/selectByCategoryId/{cid}")
+    public List<Article> selectByCategoryId(@PathVariable("cid") int cid) {
+        return articleService.selectByCategoryId(cid);
+    }
+
+    private void writeToFile(Article article) {
+        try {
+            File file = new File("blogs/" + article.getId() + ".md");
 
             //if file doesnt exists, then create it
-            if(!file.exists()){
+            if (!file.exists()) {
                 file.createNewFile();
             }
 
             FileWriter fileWritter = new FileWriter(file.getPath());
 
-            fileWritter.write(article.getTitle()+"\n");
-            fileWritter.write(article.getContent()+"\n");
+            fileWritter.write(article.getTitle() + "\n");
+            fileWritter.write(article.getContent() + "\n");
             fileWritter.close();
 
             System.out.println("Done");
 
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

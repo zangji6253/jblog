@@ -14,12 +14,12 @@ public interface ArticleService {
     /**
      * 增加
      */
-    public Article insert(Article user);
+    public Article insert(Article article);
 
     /**
      * 更新
      */
-    public int update(Article user);
+    public int update(Article article);
 
     /**
      * 查询单个
@@ -31,5 +31,10 @@ public interface ArticleService {
      */
 //    public Iterator<Article> selectAll(int pageNum, int pageSize);
     public List<Article> selectAll();
+
+    /**
+     * 按分类编号查询文章列表
+     */
+    public List<Article> selectByCategoryId(int categoryId);
 
 }

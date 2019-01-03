@@ -43,7 +43,7 @@ public class Article {
 //
 //    private Integer price;//价格
 //
-//    private Integer stock_quantity;//库存数量
+    private Integer category_id;//分类编号
 //
 //    private Integer Sales_volume;//销售数量
 

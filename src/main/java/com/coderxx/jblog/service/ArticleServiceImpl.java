@@ -3,6 +3,7 @@ package com.coderxx.jblog.service;
 import com.coderxx.jblog.entity.Article;
 import com.coderxx.jblog.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -68,4 +69,13 @@ public class ArticleServiceImpl implements ArticleService {
         return articleRepository.findAll();
     }
 
+    /**
+     * 按分类编号查询文章列表
+     */
+    public List<Article> selectByCategoryId(int categoryId){
+        Article article = new Article();
+        article.setCategory_id(categoryId);
+        Example<Article> ex = Example.of(article);
+        return articleRepository.findAll(ex);
+    }
 }
